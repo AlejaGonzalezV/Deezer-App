@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView lista;
     private MainController controller;
 
+    public final static String applicationID = "410122";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
