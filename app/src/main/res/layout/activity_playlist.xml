@@ -6,7 +6,7 @@
 
 
     <ImageView
-        android:id="@+id/playlistIV"
+        android:id="@+id/songIV"
         android:layout_width="361dp"
         android:layout_height="150dp"
         android:layout_marginTop="52dp"
@@ -24,7 +24,7 @@
         android:text="Nombre de la Playlist"
         android:textSize="27sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playlistIV" />
+        app:layout_constraintTop_toBottomOf="@+id/songIV" />
 
     <TextView
         android:id="@+id/descripcion"

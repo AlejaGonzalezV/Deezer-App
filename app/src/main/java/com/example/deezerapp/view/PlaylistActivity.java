@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.deezer.sdk.network.connect.DeezerConnect;
 import com.example.deezerapp.R;
 
 public class PlaylistActivity extends AppCompatActivity {
+
+    public final static String ID = "410122";
 
     private ImageView playlistIV;
     private TextView nombre;
@@ -21,9 +24,10 @@ public class PlaylistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_playlist);
 
-        playlistIV = findViewById(R.id.playlistIV);
+        playlistIV = findViewById(R.id.songIV);
         nombre = findViewById(R.id.nombre);
         descripcion = findViewById(R.id.descripcion);
         canciones = findViewById(R.id.descripcion);

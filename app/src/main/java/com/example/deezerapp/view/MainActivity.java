@@ -7,21 +7,25 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.deezer.sdk.network.connect.DeezerConnect;
 import com.example.deezerapp.R;
 import com.example.deezerapp.control.MainController;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String ID = "410122";
     private EditText buscar;
     private ImageButton buscarBt;
     private RecyclerView lista;
     private MainController controller;
 
-    public final static String applicationID = "410122";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         buscar = findViewById(R.id.buscar);

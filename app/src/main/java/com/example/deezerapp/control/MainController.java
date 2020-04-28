@@ -7,14 +7,17 @@ import com.example.deezerapp.util.Constants;
 import com.example.deezerapp.util.HTTPSWebUtil;
 import com.example.deezerapp.view.MainActivity;
 
-public class MainController implements View.OnClickListener{
+public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResponseListener{
 
     private MainActivity activity;
+    private HTTPSWebUtil util;
 
     public MainController(MainActivity activity){
 
         this.activity = activity;
         this.activity.getBuscarBt().setOnClickListener(this);
+        util = new HTTPSWebUtil();
+        util.setListener(this);
 
     }
 
@@ -24,13 +27,13 @@ public class MainController implements View.OnClickListener{
             case R.id.buscarBt:
 
                 String search = activity.getBuscar().getText().toString();
-                HTTPSWebUtil util = new HTTPSWebUtil();
+
 
                 new Thread(
 
                         () -> {
 
-                            util.GETrequest(Constants.SEARCH_CALLBACK, "https://api.deezer.com/playlist/"+search);
+                            util.GETrequest(Constants.SEARCH_CALLBACK, "https://api.deezer.com/search/playlist?q="+search);
 
                         }
 
@@ -39,6 +42,17 @@ public class MainController implements View.OnClickListener{
 
 
             break;
+
+        }
+    }
+
+    @Override
+    public void onResponse(int callbackID, String response) {
+        switch(callbackID){
+            case Constants.SEARCH_CALLBACK:
+
+
+                break;
 
         }
     }
