@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.deezer.sdk.network.connect.DeezerConnect;
 import com.example.deezerapp.R;
 
 public class PlaylistActivity extends AppCompatActivity {

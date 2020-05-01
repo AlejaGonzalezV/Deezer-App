@@ -2,30 +2,38 @@ package com.example.deezerapp.model;
 
 import com.google.gson.JsonObject;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class Playlist {
 
     private String id;
-    private String nombre;
-    private String canciones;
-    private String creador;
+    private String title;
+    private String nb_tracks;
+    private String link;
+    private String picture_small;
+    private String track_list;
+    private User user;
+
     private String descripcion;
     private String fans;
-    private URL imagen;
     private ArrayList<Song> lista;
 
-    public Playlist(String id, String nombre, String canciones, String creador, String descripcion, String fans, URL imagen, ArrayList<Song> lista) {
+    public Playlist(){
+
+
+    }
+
+    
+
+    public Playlist(String id, String title, String nb_tracks, String link, String picture_small, String track_list, User user) {
         this.id = id;
-        this.nombre = nombre;
-        this.canciones = canciones;
-        this.creador = creador;
-        this.descripcion = descripcion;
-        this.fans = fans;
-        this.imagen = imagen;
-        this.lista = lista;
+        this.title = title;
+        this.nb_tracks = nb_tracks;
+        this.link = link;
+        this.picture_small = picture_small;
+        this.track_list = track_list;
+        this.user = user;
+        lista = new ArrayList<Song>();
     }
 
     public String getId() {
@@ -36,28 +44,52 @@ public class Playlist {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCanciones() {
-        return canciones;
+    public String getNb_tracks() {
+        return nb_tracks;
     }
 
-    public void setCanciones(String canciones) {
-        this.canciones = canciones;
+    public void setNb_tracks(String nb_tracks) {
+        this.nb_tracks = nb_tracks;
     }
 
-    public String getCreador() {
-        return creador;
+    public String getLink() {
+        return link;
     }
 
-    public void setCreador(String creador) {
-        this.creador = creador;
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getPicture_small() {
+        return picture_small;
+    }
+
+    public void setPicture_small(String picture_small) {
+        this.picture_small = picture_small;
+    }
+
+    public String getTrack_list() {
+        return track_list;
+    }
+
+    public void setTrack_list(String track_list) {
+        this.track_list = track_list;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescripcion() {
@@ -76,14 +108,6 @@ public class Playlist {
         this.fans = fans;
     }
 
-    public URL getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(URL imagen) {
-        this.imagen = imagen;
-    }
-
     public ArrayList<Song> getLista() {
         return lista;
     }
@@ -92,7 +116,8 @@ public class Playlist {
         this.lista = lista;
     }
 
-    public void agregarCancion(Song can){
+    /*
+    public void addSong(Song can){
 
         lista.add(can);
 
@@ -105,8 +130,8 @@ public class Playlist {
         JsonObject user  = jsonObject.get("user").getAsJsonObject();
         String creador  = user.get("name").getAsString();
         String imagen  = jsonObject.get("picture").getAsString();
-
-
+        //util.GETrequest(Constants.SEARCH_CALLBACK, "https://api.deezer.com/playlist/"+id);
+       //String json =
         URL url = null;
         try{
             url  = new URL(imagen);
@@ -117,5 +142,7 @@ public class Playlist {
         //Playlist playlist = new Playlist(id,);
         return null;
     }
+    */
+
 
 }
