@@ -118,7 +118,6 @@ public class PlaylistController implements HTTPSWebUtil.OnResponseListener{
 
                 () -> {
 
-                    Log.e("NUEVOOOOOOOO2", String.valueOf(others.size()));
                     adapter.setSongs(others);
                     adapter.notifyDataSetChanged();
 

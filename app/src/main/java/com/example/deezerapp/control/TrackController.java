@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
-
 import com.bumptech.glide.Glide;
 import com.example.deezerapp.R;
 import com.example.deezerapp.model.Track;
