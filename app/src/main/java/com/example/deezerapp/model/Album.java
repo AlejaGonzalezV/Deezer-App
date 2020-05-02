@@ -3,14 +3,14 @@ package com.example.deezerapp.model;
 public class Album {
 
     String title;
-    String cover;
+    String cover_medium;
 
     public Album() {
     }
 
-    public Album(String title, String cover) {
+    public Album(String title, String cover_medium) {
         this.title = title;
-        this.cover = cover;
+        this.cover_medium = cover_medium;
     }
 
     public String getTitle() {
@@ -18,11 +18,11 @@ public class Album {
     }
 
     public String getCover() {
-        return cover;
+        return cover_medium;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setCover(String cover_medium) {
+        this.cover_medium = cover_medium;
     }
 
     public void setTitle(String title) {

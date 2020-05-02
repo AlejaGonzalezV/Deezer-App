@@ -10,7 +10,7 @@ public class Playlist implements Serializable {
     private String title;
     private String nb_tracks;
     private String link;
-    private String picture_small;
+    private String picture_medium;
     private String track_list;
     private User user;
 
@@ -30,12 +30,12 @@ public class Playlist implements Serializable {
         this.tracks = tracks;
     }
 
-    public Playlist(String id, String title, String nb_tracks, String link, String picture_small, String track_list, User user) {
+    public Playlist(String id, String title, String nb_tracks, String link, String picture_medium, String track_list, User user) {
         this.id = id;
         this.title = title;
         this.nb_tracks = nb_tracks;
         this.link = link;
-        this.picture_small = picture_small;
+        this.picture_medium = picture_medium;
         this.track_list = track_list;
         this.user = user;
     }
@@ -73,11 +73,11 @@ public class Playlist implements Serializable {
     }
 
     public String getPicture_small() {
-        return picture_small;
+        return picture_medium;
     }
 
     public void setPicture_small(String picture_small) {
-        this.picture_small = picture_small;
+        this.picture_medium = picture_small;
     }
 
     public String getTrack_list() {
