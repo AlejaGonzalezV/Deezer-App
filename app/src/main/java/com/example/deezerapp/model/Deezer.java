@@ -4,20 +4,16 @@ import java.util.ArrayList;
 
 public class Deezer {
 
-    private Playlist[] data;
+    private ArrayList<Playlist> data;
 
     public Deezer() {
     }
 
-    public Deezer(Playlist[] data) {
-        this.data = data;
-    }
-
-    public Playlist[] getData() {
+    public ArrayList<Playlist> getData() {
         return data;
     }
 
-    public void setData(Playlist[] data) {
+    public void setData(ArrayList<Playlist> data) {
         this.data = data;
     }
 }

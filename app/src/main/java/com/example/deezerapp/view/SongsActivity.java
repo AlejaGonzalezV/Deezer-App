@@ -27,7 +27,7 @@ public class SongsActivity extends AppCompatActivity {
 
         cancionIV = findViewById(R.id.cancionIV);
         nombre = findViewById(R.id.nombre);
-        artista = findViewById(R.id.artista);
+        artista = findViewById(R.id.creador);
         album = findViewById(R.id.album);
         duracion = findViewById(R.id.duracion);
         escucharBt = findViewById(R.id.escucharBt);

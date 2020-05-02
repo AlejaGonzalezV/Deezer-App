@@ -25,7 +25,7 @@ public class PlaylistActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_playlist);
 
-        playlistIV = findViewById(R.id.songIV);
+        playlistIV = findViewById(R.id.playlistIV);
         nombre = findViewById(R.id.nombre);
         descripcion = findViewById(R.id.descripcion);
         canciones = findViewById(R.id.descripcion);

@@ -3,18 +3,28 @@ package com.example.deezerapp.control;
 import android.util.Log;
 import android.view.View;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.deezerapp.R;
 import com.example.deezerapp.model.Deezer;
+import com.example.deezerapp.model.Playlist;
 import com.example.deezerapp.util.Constants;
 import com.example.deezerapp.util.HTTPSWebUtil;
+import com.example.deezerapp.util.PlaylistAdapter;
 import com.example.deezerapp.view.MainActivity;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResponseListener{
 
     private MainActivity activity;
     private HTTPSWebUtil util;
     private Deezer dz;
+    private boolean ready;
+    private ArrayList<Playlist> pl;
+    private PlaylistAdapter adapter;
 
     public MainController(MainActivity activity){
 
@@ -22,6 +32,25 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
         this.activity.getBuscarBt().setOnClickListener(this);
         util = new HTTPSWebUtil();
         util.setListener(this);
+        pl = new ArrayList<Playlist>();
+
+        activity.getLista().setHasFixedSize(true);
+        LinearLayoutManager manager = new LinearLayoutManager(activity);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        activity.getLista().setLayoutManager(manager);
+
+        adapter = new PlaylistAdapter(pl);
+        activity.getLista().setAdapter(adapter);
+        activity.getLista().addItemDecoration(new DividerItemDecoration(activity.getLista().getContext(), DividerItemDecoration.VERTICAL));
+
+        adapter.setClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
 
     }
 
@@ -38,7 +67,8 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
                         () -> {
 
                            util.GETrequest(Constants.SEARCH_CALLBACK, "https://api.deezer.com/search/playlist?q="+search);
-
+                            //adapter = new Adapter(getData());
+                            //activity.getLista().setAdapter(adapter);
 
                         }
 
@@ -51,16 +81,28 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
         }
     }
 
+
     @Override
     public void onResponse(int callbackID, String response) {
         switch(callbackID){
             case Constants.SEARCH_CALLBACK:
                 Gson gson = new Gson();
                 dz = gson.fromJson(response, Deezer.class);
-                Log.e(">>>>>>>>>>>>>>>>>>>>> ", dz.getData()[3].getTitle());
-                Log.e(">>>>>>>>>>>>>>>>>>>>> ", dz.getData()[1].getUser().getName());
+                Log.e(">>>>>>>>>>>>>>>>>>>>> ", dz.getData().get(0).getTitle());
+                Log.e(">>>>>>>>>>>>>>>>>>>>> ", dz.getData().get(0).getUser().getName());
+                pl = dz.getData();
 
-                break;
+                activity.runOnUiThread(
+                        ()->
+                        {
+                            Log.e(">>>>>>>>>>>>>>>>>>>>> ", "ACAAAA");
+                            adapter.setPlayLists(pl);
+                            adapter.notifyDataSetChanged();
+                        }
+                );
+
+
+
 
         }
     }

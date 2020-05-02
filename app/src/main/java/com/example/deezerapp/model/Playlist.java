@@ -1,10 +1,10 @@
 package com.example.deezerapp.model;
 
-import com.google.gson.JsonObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Playlist {
+public class Playlist implements Serializable {
 
     private String id;
     private String title;
@@ -23,7 +23,7 @@ public class Playlist {
 
     }
 
-    
+
 
     public Playlist(String id, String title, String nb_tracks, String link, String picture_small, String track_list, User user) {
         this.id = id;

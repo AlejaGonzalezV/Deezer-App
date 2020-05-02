@@ -1,6 +1,7 @@
 package com.example.deezerapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView lista;
     private MainController controller;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         buscar = findViewById(R.id.buscar);
         lista = findViewById(R.id.lista);
         buscarBt = findViewById(R.id.buscarBt);
-
         controller = new MainController(this);
-
 
     }
 
@@ -36,11 +36,23 @@ public class MainActivity extends AppCompatActivity {
         return buscar;
     }
 
+    public void setBuscar(EditText buscar) {
+        this.buscar = buscar;
+    }
+
     public ImageButton getBuscarBt() {
         return buscarBt;
     }
 
+    public void setBuscarBt(ImageButton buscarBt) {
+        this.buscarBt = buscarBt;
+    }
+
     public RecyclerView getLista() {
         return lista;
+    }
+
+    public void setLista(RecyclerView lista) {
+        this.lista = lista;
     }
 }
