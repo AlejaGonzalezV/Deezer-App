@@ -14,16 +14,21 @@ public class Playlist implements Serializable {
     private String track_list;
     private User user;
 
-    private String descripcion;
+    private String description;
     private String fans;
-    private ArrayList<Song> lista;
+    private AllTracks tracks;
 
     public Playlist(){
 
-
     }
 
-
+    public Playlist(String title, String nb_tracks, String description, String fans, AllTracks tracks) {
+        this.title = title;
+        this.nb_tracks = nb_tracks;
+        this.description = description;
+        this.fans = fans;
+        this.tracks = tracks;
+    }
 
     public Playlist(String id, String title, String nb_tracks, String link, String picture_small, String track_list, User user) {
         this.id = id;
@@ -33,7 +38,6 @@ public class Playlist implements Serializable {
         this.picture_small = picture_small;
         this.track_list = track_list;
         this.user = user;
-        lista = new ArrayList<Song>();
     }
 
     public String getId() {
@@ -93,11 +97,11 @@ public class Playlist implements Serializable {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return description;
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.description = descripcion;
     }
 
     public String getFans() {
@@ -108,41 +112,19 @@ public class Playlist implements Serializable {
         this.fans = fans;
     }
 
-    public ArrayList<Song> getLista() {
-        return lista;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLista(ArrayList<Song> lista) {
-        this.lista = lista;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    /*
-    public void addSong(Song can){
-
-        lista.add(can);
-
+    public AllTracks getTracks() {
+        return tracks;
     }
 
-    public static Playlist getPlaylist(JsonObject jsonObject){
-        String id  = jsonObject.get("id").getAsString();
-        String nombre  = jsonObject.get("title").getAsString();
-        String canciones  = jsonObject.get("nb_tracks").getAsString();
-        JsonObject user  = jsonObject.get("user").getAsJsonObject();
-        String creador  = user.get("name").getAsString();
-        String imagen  = jsonObject.get("picture").getAsString();
-        //util.GETrequest(Constants.SEARCH_CALLBACK, "https://api.deezer.com/playlist/"+id);
-       //String json =
-        URL url = null;
-        try{
-            url  = new URL(imagen);
-        } catch (MalformedURLException ex){
-
-        }
-
-        //Playlist playlist = new Playlist(id,);
-        return null;
+    public void setTracks(AllTracks tracks) {
+        this.tracks = tracks;
     }
-    */
-
-
 }

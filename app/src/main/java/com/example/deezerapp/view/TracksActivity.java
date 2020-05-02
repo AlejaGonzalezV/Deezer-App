@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import com.example.deezerapp.R;
 
-public class SongsActivity extends AppCompatActivity {
-
-    public final static String ID = "410122";
+public class TracksActivity extends AppCompatActivity {
 
     private ImageView cancionIV;
     private TextView nombre;
@@ -27,7 +25,7 @@ public class SongsActivity extends AppCompatActivity {
 
         cancionIV = findViewById(R.id.cancionIV);
         nombre = findViewById(R.id.nombre);
-        artista = findViewById(R.id.creador);
+        artista = findViewById(R.id.artista);
         album = findViewById(R.id.album);
         duracion = findViewById(R.id.duracion);
         escucharBt = findViewById(R.id.escucharBt);

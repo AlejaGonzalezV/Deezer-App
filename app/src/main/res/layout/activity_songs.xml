@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.SongsActivity">
+    tools:context=".view.TracksActivity">
 
     <ImageView
         android:id="@+id/cancionIV"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/album" />
 
     <TextView
-        android:id="@+id/creador"
+        android:id="@+id/artista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creador" />
+        app:layout_constraintTop_toBottomOf="@+id/artista" />
 
     <Button
         android:id="@+id/escucharBt"

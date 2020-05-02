@@ -86,6 +86,29 @@ public class HTTPSWebUtil {
         }
     }
 
+    public String GETrequest(String url) {
+        String response = "";
+        try {
+            URL page = new URL(url);
+            HttpsURLConnection connection = (HttpsURLConnection) page.openConnection();
+            InputStream is = connection.getInputStream();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = is.read(buffer)) != -1) {
+                baos.write(buffer, 0, bytesRead);
+            }
+            is.close();
+            baos.close();
+            connection.disconnect();
+            response = new String(baos.toByteArray(), "UTF-8");
+
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+        return response;
+    }
+
     public void POSTrequest(int callbackID, String url, String json) {
         try {
             URL page = new URL(url);

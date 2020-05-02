@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.deezerapp.R;
 import com.example.deezerapp.model.Playlist;
 
@@ -22,7 +23,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHolder>{
+public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHolder> {
 
     private ArrayList<Playlist> playLists;
     private View.OnClickListener clicList;
@@ -31,26 +32,32 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
 
         private TextView nombre, creador, items;
         private ImageView playlistIV;
+        private View v;
 
         public ViewHolder(View view) {
             super(view);
-            playlistIV = view.findViewById(R.id.playlistIV);
+            v = view;
+            playlistIV = view.findViewById(R.id.songIV);
             nombre = view.findViewById(R.id.nombre);
-            creador = view.findViewById(R.id.creador);
-            items = view.findViewById(R.id.items);
-
+            creador = view.findViewById(R.id.artista);
+            items = view.findViewById(R.id.lanzamiento);
 
         }
 
+        public void cambiarImagen(String url) {
+
+            Glide.with(v).load(url).centerCrop().into(playlistIV);
+
+        }
+
+
     }
 
-    public PlaylistAdapter(ArrayList<Playlist> playLists)
-    {
+    public PlaylistAdapter(ArrayList<Playlist> playLists) {
         this.playLists = playLists;
     }
 
-    public void setPlayLists(ArrayList<Playlist> playLists)
-    {
+    public void setPlayLists(ArrayList<Playlist> playLists) {
         this.playLists = playLists;
         notifyDataSetChanged();
 
@@ -66,7 +73,14 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.playlist_row, parent, false);
         ViewHolder holder = new ViewHolder(view);
-       return holder;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clicList.onClick(view);
+            }
+        });
+
+        return holder;
     }
 
     @Override
@@ -75,9 +89,13 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
         holder.nombre.setText(playLists.get(position).getTitle());
         holder.creador.setText(playLists.get(position).getUser().getName());
         holder.items.setText(playLists.get(position).getNb_tracks());
-        //holder.playlistIV.setImageBitmap(getImage(playLists.get(position).getPicture_small()));
-        Log.e("<<<<<<<<<<<<<<<<< ", "AdapterSetting");
+        holder.cambiarImagen(playLists.get(position).getPicture_small());
 
+
+    }
+
+    public ArrayList<Playlist> getPlayLists() {
+        return playLists;
     }
 
     @Override
@@ -87,22 +105,6 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
 
 
 
-    private Bitmap getImage(String url) {
-        Bitmap bm = null;
-        try {
-            URL _url = new URL(url);
-            URLConnection con = _url.openConnection();
-            con.connect();
-            InputStream is = con.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            bm = BitmapFactory.decodeStream(bis);
-            bis.close();
-            is.close();
-        } catch (IOException e) {
-
-        }
-        return bm;
-    }
 
 
 

@@ -1,5 +1,6 @@
 package com.example.deezerapp.control;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
@@ -13,6 +14,8 @@ import com.example.deezerapp.util.Constants;
 import com.example.deezerapp.util.HTTPSWebUtil;
 import com.example.deezerapp.util.PlaylistAdapter;
 import com.example.deezerapp.view.MainActivity;
+import com.example.deezerapp.view.PlaylistActivity;
+import com.example.deezerapp.view.TracksActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -22,7 +25,6 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
     private MainActivity activity;
     private HTTPSWebUtil util;
     private Deezer dz;
-    private boolean ready;
     private ArrayList<Playlist> pl;
     private PlaylistAdapter adapter;
 
@@ -47,7 +49,11 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
             @Override
             public void onClick(View v) {
 
-
+                int pos =activity.getLista().getChildAdapterPosition(v);
+                String id  = adapter.getPlayLists().get(pos).getId();
+                Intent i = new Intent(activity, PlaylistActivity.class);
+                i.putExtra("id", id);
+                activity.startActivity(i);
 
             }
         });
@@ -67,8 +73,7 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
                         () -> {
 
                            util.GETrequest(Constants.SEARCH_CALLBACK, "https://api.deezer.com/search/playlist?q="+search);
-                            //adapter = new Adapter(getData());
-                            //activity.getLista().setAdapter(adapter);
+
 
                         }
 
@@ -82,20 +87,20 @@ public class MainController implements View.OnClickListener, HTTPSWebUtil.OnResp
     }
 
 
+
+
     @Override
     public void onResponse(int callbackID, String response) {
         switch(callbackID){
             case Constants.SEARCH_CALLBACK:
                 Gson gson = new Gson();
                 dz = gson.fromJson(response, Deezer.class);
-                Log.e(">>>>>>>>>>>>>>>>>>>>> ", dz.getData().get(0).getTitle());
-                Log.e(">>>>>>>>>>>>>>>>>>>>> ", dz.getData().get(0).getUser().getName());
                 pl = dz.getData();
 
                 activity.runOnUiThread(
                         ()->
                         {
-                            Log.e(">>>>>>>>>>>>>>>>>>>>> ", "ACAAAA");
+
                             adapter.setPlayLists(pl);
                             adapter.notifyDataSetChanged();
                         }
