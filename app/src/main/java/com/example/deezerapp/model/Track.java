@@ -8,17 +8,19 @@ public class Track {
     private String release_date;
     private Album album;
     private Artista artist;
+    private String preview;
 
 
     public Track() {
     }
 
-    public Track(String id, String title, String duration, Album album, Artista artist) {
+    public Track(String id, String title, String duration, Album album, Artista artist, String preview) {
         this.id = id;
         this.title = title;
         this.duration = duration;
         this.album = album;
         this.artist = artist;
+        this.preview = preview;
     }
 
     public Track(String id, String title, String duration, String release_date, Album album, Artista artist) {
@@ -76,5 +78,13 @@ public class Track {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPreview() {
+        return preview;
+    }
+
+    public void setPreview(String preview) {
+        this.preview = preview;
     }
 }

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.deezerapp.R;
+import com.example.deezerapp.control.TrackController;
 
 public class TracksActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class TracksActivity extends AppCompatActivity {
     private TextView album;
     private TextView duracion;
     private Button escucharBt;
+    private TrackController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class TracksActivity extends AppCompatActivity {
         album = findViewById(R.id.album);
         duracion = findViewById(R.id.duracion);
         escucharBt = findViewById(R.id.escucharBt);
+
+        controller = new TrackController(this);
+
+
 
     }
 

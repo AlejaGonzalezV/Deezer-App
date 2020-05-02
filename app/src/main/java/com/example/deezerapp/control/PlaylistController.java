@@ -15,6 +15,7 @@ import com.example.deezerapp.util.Constants;
 import com.example.deezerapp.util.HTTPSWebUtil;
 import com.example.deezerapp.util.PlaylistDetAdapter;
 import com.example.deezerapp.view.PlaylistActivity;
+import com.example.deezerapp.view.TracksActivity;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -51,7 +52,11 @@ public class PlaylistController implements HTTPSWebUtil.OnResponseListener{
             @Override
             public void onClick(View v) {
 
-                //Llamo la otra view y paso el id de track
+                int pos =activity.getLista().getChildAdapterPosition(v);
+                String id  = adapter.getTracks().get(pos).getId();
+                Intent i = new Intent(activity, TracksActivity.class);
+                i.putExtra("id", id);
+                activity.startActivity(i);
 
             }
         });
@@ -79,7 +84,6 @@ public class PlaylistController implements HTTPSWebUtil.OnResponseListener{
                         }
 
                 );
-                Log.e("NUEVOOOOOOOOO ", String.valueOf(playlist == null));
                 tracks();
                 break;
 

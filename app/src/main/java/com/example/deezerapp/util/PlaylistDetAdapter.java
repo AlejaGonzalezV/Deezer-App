@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.deezerapp.R;
-import com.example.deezerapp.model.Playlist;
 import com.example.deezerapp.model.Track;
 
 import java.util.ArrayList;
@@ -96,9 +95,11 @@ public class PlaylistDetAdapter extends RecyclerView.Adapter<PlaylistDetAdapter.
         clicList = (View.OnClickListener) callback;
     }
 
+    public ArrayList<Track> getTracks() {
+        return tracks;
+    }
 
-
-
-
-
+    public void setTracks(ArrayList<Track> tracks) {
+        this.tracks = tracks;
+    }
 }
